@@ -1,0 +1,6 @@
+{
+  "name": "gti",
+  "version": "0.0.1",
+  "bin": "./gti.js",
+  "preferGlobal": true
+}
