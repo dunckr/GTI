@@ -4,12 +4,12 @@ var counter = 0;
 var width = process.stdout.columns;
 
 setInterval(function () {
+  if (counter > width + 1) {
+    process.exit(1);
+  }
   clear();
   drawCar(counter);
   counter++;
-  if (counter > width + 2) {
-    process.exit(1);
-  }
 }, 100);
 
 function drawCar(x) {
