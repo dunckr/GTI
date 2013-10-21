@@ -4,9 +4,6 @@
   "description": "GTI",
   "author": "Duncan Beaton (https://github.com/dunckr)",
   "license": "MIT",
-  "dependencies": {
-    "chalk": "~0.2.0"
-  },
   "bin": "./gti.js",
   "preferGlobal": true
 }

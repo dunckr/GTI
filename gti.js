@@ -1,38 +1,39 @@
 #!/usr/bin/env node
 
-chalk = require('chalk');
+var counter = 0;
+var width = process.stdout.columns;
 
-var i = 0;  // dots counter
-
-
-setInterval(function() {
-  process.stdout.clearLine();
-  process.stdout.cursorTo(i);
-  process.stdout.write(drawCar());
-  // process.stdout.write('one')
-  i++;
+setInterval(function () {
+  clear();
+  drawCar(counter);
+  counter++;
+  if (counter > width + 2) {
+    process.exit(1);
+  }
 }, 100);
 
-
-function drawCar() {
-  return "   ,---------------.\n" +
-        "  /  /``````|``````\\\\\n" +
-        " /  /_______|_______\\\\________\n" +
-        "|]      GTI |'       |        |]\n" +
-        "=  .-:-.    |________|  .-:-.  =\n" +
-        " `  -+-  --------------  -+-  '\n" +
-        "   '-:-'                '-:-' \n ";
+function drawCar(x) {
+  lineAt(x, "   ,---------------.");
+  lineAt(x, "  /  /``````|``````\\\\");
+  lineAt(x, " /  /_______|_______\\\\________");
+  lineAt(x, "|]      GTI |'       |        |]");
+  if (x % 2) {
+    lineAt(x, "=  .-:-.    |________|  .-:-.  =");
+    lineAt(x, " `  -+-  --------------  -+-  '");
+    lineAt(x, "   '-:-'                '-:-' ");
+  } else {
+    lineAt(x, "=  .:-:.    |________|  .:-:.  =");
+    lineAt(x, " `   X   --------------   X   '");
+    lineAt(x, "   ':-:'                ':-:'  ");
+  }
 }
 
-// line_at(x, "   ,---------------.");
-// line_at(x, "  /  /``````|``````\\\\");
-// line_at(x, " /  /_______|_______\\\\________");
-// line_at(x, "|]      GTI |'       |        |]");
-// if (x % 2) {
-// line_at(x, "=  .-:-.    |________|  .-:-.  =");
-// line_at(x, " `  -+-  --------------  -+-  '");
-// line_at(x, "   '-:-'                '-:-'  ");
-// } else {
-// line_at(x, "=  .:-:.    |________|  .:-:.  =");
-// line_at(x, " `   X   --------------   X   '");
-// line_at(x, "   ':-:'                ':-:'  ");
+function lineAt(x, str) {
+  var blank = Array(x).join(' ');
+  output = blank + str;
+  process.stdout.write(output.slice(0, width) + '\n');
+}
+
+function clear() {
+  process.stdout.write('\u001B[0;0f');
+}
