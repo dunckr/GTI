@@ -1,7 +1,8 @@
 {
   "name": "gti",
   "version": "0.0.3",
-  "description": "GTI",
+  "description": "For when you type git too quickly.",
+  "keywords": ["funny"],
   "author": "Duncan Beaton (https://github.com/dunckr)",
   "license": "MIT",
   "bin": "./gti.js",
