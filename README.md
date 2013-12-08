@@ -3,6 +3,8 @@ GTI
 
 When you type git too quickly!
 
+![ZOOM](http://i.imgur.com/efBbAaH.gif "Makes it go faster")
+
 Node port of GTI by [Richard Wossal](https://github.com/rwos/gti)
 
 ## Install
